@@ -9,38 +9,39 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.adminCont = void 0;
-const admin_model_1 = require("../models/admin.model");
+exports.moduloCont = void 0;
+const modulo_model_1 = require("../models/modulo.model");
 const util_service_1 = require("../services/util.service");
-class AdminControll {
-    getAdmin(admin) {
+class ModuloControll {
+    getModulo(modulo) {
         return __awaiter(this, void 0, void 0, function* () {
-            util_service_1.utilServ.log("admin Service", "Intento---------->  getAdmin");
-            return yield admin_model_1.adminModel.find(admin);
+            util_service_1.utilServ.log("Modulo Service", "Intento---------->  getModulo");
+            return yield modulo_model_1.moduloModel.find(modulo);
         });
     }
-    addAdmin(admin) {
+    addModulo(modulo) {
         return __awaiter(this, void 0, void 0, function* () {
-            util_service_1.utilServ.log("admin Service", "Intento---------->  addAdmin");
-            let aux = yield new admin_model_1.adminModel(admin);
+            util_service_1.utilServ.log("Modulo Service", "Intento---------->  addModulo");
+            modulo.fechaAdd = util_service_1.utilServ.getFecha(false);
+            let aux = yield new modulo_model_1.moduloModel(modulo);
             yield aux.save();
             return aux;
         });
     }
-    dellAdmin(id) {
+    dellModulo(id) {
         return __awaiter(this, void 0, void 0, function* () {
-            util_service_1.utilServ.log("admin Service", "Intento---------->  dellAdmin");
-            if ((yield admin_model_1.adminModel.findByIdAndDelete(id)) != null) {
+            util_service_1.utilServ.log("Modulo Service", "Intento---------->  dellModulo");
+            if ((yield modulo_model_1.moduloModel.findByIdAndDelete(id)) != null) {
                 return true;
             }
             return false;
         });
     }
-    updatAdmin(id, admin) {
+    updateModulo(id, modulo) {
         return __awaiter(this, void 0, void 0, function* () {
-            util_service_1.utilServ.log("admin Service", "Intento---------->  updateAdmin");
-            return admin_model_1.adminModel.findByIdAndUpdate(id, { $set: admin }, { new: true });
+            util_service_1.utilServ.log("Modulo Service", "Intento---------->  updateModulo");
+            return modulo_model_1.moduloModel.findByIdAndUpdate(id, { $set: modulo }, { new: true });
         });
     }
 }
-exports.adminCont = new AdminControll;
+exports.moduloCont = new ModuloControll;

@@ -11,30 +11,24 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.resolvers = void 0;
 const admin_controller_1 = require("../controllers/admin.controller");
-const grade_controller_1 = require("../controllers/grade.controller");
+const inventario_controller_1 = require("../controllers/inventario.controller");
 const granja_controller_1 = require("../controllers/granja.controller");
-const suscrip_controller_1 = require("../controllers/suscrip.controller");
+const modulo_controller_1 = require("../controllers/modulo.controller");
 exports.resolvers = {
     Query: {
         default: () => 'GraphQL default execution',
         getGranja: (_, { granja }) => __awaiter(void 0, void 0, void 0, function* () {
+            console.log(granja);
             return yield granja_controller_1.granjaCont.getGranja(granja);
         }),
         getAdmin: (_, { admin }) => __awaiter(void 0, void 0, void 0, function* () {
             return yield admin_controller_1.adminCont.getAdmin(admin);
         }),
-        getGrade: (_, { grade }) => __awaiter(void 0, void 0, void 0, function* () {
-            return yield grade_controller_1.gradeCont.getGrade(grade);
+        getInventario: (_, { inventario }) => __awaiter(void 0, void 0, void 0, function* () {
+            return yield inventario_controller_1.inventarioCont.getInventario(inventario);
         }),
-        getSuscrip: (_, { suscrip }) => __awaiter(void 0, void 0, void 0, function* () {
-            return yield suscrip_controller_1.suscripCont.getSuscrip(suscrip);
-        }),
-        getGradeWhitOut: (_, { grade }) => __awaiter(void 0, void 0, void 0, function* () {
-            return yield grade_controller_1.gradeCont.getGradeWhitOut(grade);
-        }),
-        CountSuscripPerGrade: (_, { grade }) => __awaiter(void 0, void 0, void 0, function* () {
-            let suscrips = yield suscrip_controller_1.suscripCont.getSuscrip({ idCurso: grade.id });
-            return suscrips.length;
+        getModulo: (_, { modulo }) => __awaiter(void 0, void 0, void 0, function* () {
+            return yield modulo_controller_1.moduloCont.getModulo(modulo);
         }),
     },
     Mutation: {
@@ -56,23 +50,23 @@ exports.resolvers = {
         dellAdmin: (_, { id }) => __awaiter(void 0, void 0, void 0, function* () {
             return yield admin_controller_1.adminCont.dellAdmin(id);
         }),
-        addGrade: (_, { grade }) => __awaiter(void 0, void 0, void 0, function* () {
-            return yield grade_controller_1.gradeCont.addGrade(grade);
+        addInventario: (_, { inventario }) => __awaiter(void 0, void 0, void 0, function* () {
+            return yield inventario_controller_1.inventarioCont.addInventario(inventario);
         }),
-        updatGrade: (_, { id, grade }) => __awaiter(void 0, void 0, void 0, function* () {
-            return yield grade_controller_1.gradeCont.updatGrade(id, grade);
+        updatInventario: (_, { id, inventario }) => __awaiter(void 0, void 0, void 0, function* () {
+            return yield inventario_controller_1.inventarioCont.updateInventario(id, inventario);
         }),
-        dellGrade: (_, { id }) => __awaiter(void 0, void 0, void 0, function* () {
-            return yield grade_controller_1.gradeCont.dellGrade(id);
+        dellInventario: (_, { id }) => __awaiter(void 0, void 0, void 0, function* () {
+            return yield inventario_controller_1.inventarioCont.dellInventario(id);
         }),
-        addSuscrip: (_, { suscrip }) => __awaiter(void 0, void 0, void 0, function* () {
-            return yield suscrip_controller_1.suscripCont.addSuscrip(suscrip);
+        addModulo: (_, { modulo }) => __awaiter(void 0, void 0, void 0, function* () {
+            return yield modulo_controller_1.moduloCont.addModulo(modulo);
         }),
-        updateSuscrip: (_, { id, suscrip }) => __awaiter(void 0, void 0, void 0, function* () {
-            return yield suscrip_controller_1.suscripCont.updateSuscrip(id, suscrip);
+        updateModulo: (_, { id, modulo }) => __awaiter(void 0, void 0, void 0, function* () {
+            return yield modulo_controller_1.moduloCont.updateModulo(id, modulo);
         }),
-        dellSuscrip: (_, { id }) => __awaiter(void 0, void 0, void 0, function* () {
-            return yield suscrip_controller_1.suscripCont.dellSuscrip(id);
+        dellModulo: (_, { id }) => __awaiter(void 0, void 0, void 0, function* () {
+            return yield modulo_controller_1.moduloCont.dellModulo(id);
         }),
     }
 };

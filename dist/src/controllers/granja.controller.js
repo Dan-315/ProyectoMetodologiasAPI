@@ -15,6 +15,7 @@ const util_service_1 = require("../services/util.service");
 class GranjaControll {
     getGranja(granja) {
         return __awaiter(this, void 0, void 0, function* () {
+            console.log(granja);
             util_service_1.utilServ.log("granja Service", "Intento---------->  getGranja");
             return yield granja_model_1.granjaModel.find(granja);
         });

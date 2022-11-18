@@ -23,7 +23,6 @@ exports.typeDefs = (0, apollo_server_express_1.gql) `
         nombre:String,
         apellido:String,
         usuario:String,
-        password:String
     }
     input AdminInput{
         id:ID,
@@ -33,39 +32,36 @@ exports.typeDefs = (0, apollo_server_express_1.gql) `
         usuario:String,
         password:String
     }
-    type Grade{
-        id:ID
-        idInstructor:String,
-        nombre:String,
-        horario:[String],
-        categorias:[String],
-        descripcion:String,
-        duracion:Float,
-        costo:Float,
-        cupo:Float
-    }
-    input GradeInput{
+    type Inventario{
         id:ID,
-        idInstructor:String,
-        nombre:String,
-        horario:[String],
-        categorias:[String],
-        descripcion:String,
-        duracion:Float,
-        costo:Float,
-        cupo:Float
+        idModulo:String,
+        concepto:String,
+        minimo:Float,
+        existencias:Float,
+        solicitud:Float,
+        fechaUpdate:GraphQLDateTime
+    }
+    input InventarioInput{
+        id:ID,
+        idModulo:String,
+        concepto:String,
+        minimo:Float,
+        existencias:Float,
+        solicitud:Float,
+        fechaUpdate:GraphQLDateTime
     }
 
-    type Suscrip{
+    type Modulo{
         id:ID,
-        idCurso:String,
-        idUsuario:String,
-        fechaSuscrip:String,
+        idGranja:String,
+        nombre:String,
+        fechaAdd:String,
     }
-    input SuscripInput{
-        idCurso:String,
-        idUsuario:String,
-        fechaSuscrip:String,
+    input ModuloInput{
+        id:ID,
+        idGranja:String,
+        nombre:String,
+        fechaAdd:String,
     }
 
     type Query{
@@ -75,14 +71,10 @@ exports.typeDefs = (0, apollo_server_express_1.gql) `
 
         getAdmin(admin:AdminInput):[Admin]
         
-        getGrade(grade:GradeInput):[Grade]
+        getInventario(inventario:InventarioInput):[Inventario]
 
-        getSuscrip(suscrip:SuscripInput):[Suscrip]
+        getModulo(modulo:ModuloInput):[Modulo]
 
-        
-        getGradeWhitOut(grade:GradeInput):[Grade]
-
-        CountSuscripPerGrade(grade:GradeInput):Float
     } 
  
     type Mutation{
@@ -95,13 +87,13 @@ exports.typeDefs = (0, apollo_server_express_1.gql) `
         dellAdmin(id:ID!):Boolean
 
         
-        addGrade(grade:GradeInput!):Grade
-        updatGrade(id:ID!,grade:GradeInput):Grade
-        dellGrade(id:ID!):Boolean
+        addInventario(inventario:InventarioInput!):Inventario
+        updatInventario(id:ID!,inventario:InventarioInput):Inventario
+        dellInventario(id:ID!):Boolean
 
-        addSuscrip(suscrip:SuscripInput!):Suscrip
-        updateSuscrip(id:ID!,suscrip:SuscripInput):Suscrip
-        dellSuscrip(id:ID!):Boolean
+        addModulo(modulo:ModuloInput!):Modulo
+        updateModulo(id:ID!,modulo:ModuloInput):Modulo
+        dellModulo(id:ID!):Boolean
 
     }
 

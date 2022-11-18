@@ -4,6 +4,8 @@ import { utilServ } from '../services/util.service';
 class GranjaControll{
 
     async getGranja(granja:any){
+        console.log(granja);
+        
         utilServ.log("granja Service","Intento---------->  getGranja");
         return await granjaModel.find(granja);
     }

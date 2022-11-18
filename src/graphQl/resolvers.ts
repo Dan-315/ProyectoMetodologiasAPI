@@ -1,13 +1,15 @@
 import { adminCont } from "../controllers/admin.controller";
-import { gradeCont } from "../controllers/grade.controller";
+import { inventarioCont } from "../controllers/inventario.controller";
 import { granjaCont } from "../controllers/granja.controller"; 
-import { suscripCont } from "../controllers/suscrip.controller";
+import { moduloCont } from "../controllers/modulo.controller";
 
 export const resolvers = {
     Query:{
         default: ()=> 'GraphQL default execution',
 
         getGranja: async (_:any,{granja}:any)=>{
+            console.log(granja);
+            
             return await granjaCont.getGranja(granja)
         },
 
@@ -15,24 +17,14 @@ export const resolvers = {
             return await adminCont.getAdmin(admin);
         },
 
-        getGrade: async (_:any,{grade}:any)=>{
-            return await gradeCont.getGrade(grade);
+        getInventario: async (_:any,{inventario}:any)=>{
+            return await inventarioCont.getInventario(inventario);
         },
 
-        getSuscrip: async(_:any,{suscrip}:any)=>{
-            return await suscripCont.getSuscrip(suscrip);
+        getModulo: async(_:any,{modulo}:any)=>{
+            return await moduloCont.getModulo(modulo);
         },
 
-        getGradeWhitOut: async (_:any,{grade}:any)=>{
-            return await gradeCont.getGradeWhitOut(grade);
-        }, 
-
-
-        CountSuscripPerGrade: async(_:any,{grade}:any)=>{
-            let suscrips=await suscripCont.getSuscrip({idCurso:grade.id});
-            return suscrips.length;
-        },
-        
 
     },
     Mutation:{ 
@@ -56,24 +48,24 @@ export const resolvers = {
             return await adminCont.dellAdmin(id)
         },
 
-        addGrade: async (_:any, {grade}:any,) =>{
-            return await gradeCont.addGrade(grade);
+        addInventario: async (_:any, {inventario}:any,) =>{
+            return await inventarioCont.addInventario(inventario);
         },
-        updatGrade: async (_:any, {id,grade}:any,) =>{
-            return await gradeCont.updatGrade(id,grade);
+        updatInventario: async (_:any, {id,inventario}:any,) =>{
+            return await inventarioCont.updateInventario(id,inventario);
         },
-        dellGrade: async (_:any,{id}:any)=>{
-            return await gradeCont.dellGrade(id)
+        dellInventario: async (_:any,{id}:any)=>{
+            return await inventarioCont.dellInventario(id)
         },
 
-        addSuscrip: async(_:any, {suscrip}:any,) =>{
-            return await suscripCont.addSuscrip(suscrip);
+        addModulo: async(_:any, {modulo}:any,) =>{
+            return await moduloCont.addModulo(modulo);
         },
-        updateSuscrip: async (_:any, {id,suscrip}:any,) =>{
-            return await suscripCont.updateSuscrip(id,suscrip);
+        updateModulo: async (_:any, {id,modulo}:any,) =>{
+            return await moduloCont.updateModulo(id,modulo);
         },
-        dellSuscrip: async (_:any,{id}:any)=>{
-            return await suscripCont.dellSuscrip(id);
+        dellModulo: async (_:any,{id}:any)=>{
+            return await moduloCont.dellModulo(id);
         },
     }
 }

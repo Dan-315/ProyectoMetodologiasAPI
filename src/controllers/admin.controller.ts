@@ -9,7 +9,6 @@ class AdminControll{
     }
     async addAdmin(admin:any){
         utilServ.log("admin Service","Intento---------->  addAdmin");
-        console.log(admin);
         
         let aux = await new adminModel(admin);
         await aux.save();
