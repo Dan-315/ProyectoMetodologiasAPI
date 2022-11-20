@@ -7,4 +7,4 @@ const ModuloSchema = new Schema({
     fechaAdd:String,
 });
 
-export const moduloModel = mongoose.model('Modulo',ModuloSchema);
+export const moduloModel = mongoose.model('modulo',ModuloSchema);

@@ -11,4 +11,4 @@ const ModuloSchema = new Schema({
     nombre: String,
     fechaAdd: String,
 });
-exports.moduloModel = mongoose_1.default.model('Modulo', ModuloSchema);
+exports.moduloModel = mongoose_1.default.model('modulo', ModuloSchema);
