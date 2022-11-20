@@ -66,6 +66,11 @@ exports.resolvers = {
             return yield modulo_controller_1.moduloCont.updateModulo(id, modulo);
         }),
         dellModulo: (_, { id }) => __awaiter(void 0, void 0, void 0, function* () {
+            let invents = yield inventario_controller_1.inventarioCont.getInventario({ idModulo: id });
+            // console.log(invents);
+            for (let inv of invents) {
+                yield inventario_controller_1.inventarioCont.dellInventario(inv.id);
+            }
             return yield modulo_controller_1.moduloCont.dellModulo(id);
         }),
     }

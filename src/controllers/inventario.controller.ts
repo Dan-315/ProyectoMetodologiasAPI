@@ -9,10 +9,10 @@ class InventarioControll{
     }
     async addInventario(inventario:any){
         utilServ.log("Inventario Service","Intento---------->  addInventario");
-        console.log(inventario);
         
         inventario.fechaUpdate=utilServ.getFecha(false);
-        if(inventario.minimo && inventario.existencias){
+
+        if(inventario.minimo>=0 && inventario.existencias>=0){
             let solicitud=inventario.minimo-inventario.existencias
             inventario.solicitud=solicitud>0?solicitud:0;
         }else{

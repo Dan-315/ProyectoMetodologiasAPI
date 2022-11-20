@@ -22,9 +22,8 @@ class InventarioControll {
     addInventario(inventario) {
         return __awaiter(this, void 0, void 0, function* () {
             util_service_1.utilServ.log("Inventario Service", "Intento---------->  addInventario");
-            console.log(inventario);
             inventario.fechaUpdate = util_service_1.utilServ.getFecha(false);
-            if (inventario.minimo && inventario.existencias) {
+            if (inventario.minimo >= 0 && inventario.existencias >= 0) {
                 let solicitud = inventario.minimo - inventario.existencias;
                 inventario.solicitud = solicitud > 0 ? solicitud : 0;
             }

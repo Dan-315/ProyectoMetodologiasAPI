@@ -65,6 +65,11 @@ export const resolvers = {
             return await moduloCont.updateModulo(id,modulo);
         },
         dellModulo: async (_:any,{id}:any)=>{
+            let invents= await inventarioCont.getInventario({idModulo:id})
+            // console.log(invents);
+            for(let inv of invents){
+                await inventarioCont.dellInventario(inv.id)
+            }
             return await moduloCont.dellModulo(id);
         },
     }
