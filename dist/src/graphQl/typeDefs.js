@@ -92,7 +92,7 @@ exports.typeDefs = (0, apollo_server_express_1.gql) `
         dellInventario(id:ID!):Boolean
 
         addModulo(modulo:ModuloInput!):Modulo
-        updateModulo(id:ID!,modulo:ModuloInput):Modulo
+        updateModulo(id:ID!,modulo:ModuloInput):Modulo 
         dellModulo(id:ID!):Boolean
 
     }

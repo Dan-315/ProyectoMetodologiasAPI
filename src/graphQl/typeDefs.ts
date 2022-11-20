@@ -90,7 +90,7 @@ export const typeDefs = gql`
         dellInventario(id:ID!):Boolean
 
         addModulo(modulo:ModuloInput!):Modulo
-        updateModulo(id:ID!,modulo:ModuloInput):Modulo
+        updateModulo(id:ID!,modulo:ModuloInput):Modulo 
         dellModulo(id:ID!):Boolean
 
     }
